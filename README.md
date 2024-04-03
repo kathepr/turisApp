@@ -10,26 +10,35 @@
 **get:** 
 
 peticion1 = requests.get(f"[http://154.38.171.54:5503/activos?id={id}](http://154.38.171.54:5503/activos?id=%7Bid%7D)")
+
 data1 = json.loads(peticion1.text)
+
 datosActuales = data1[0]
 
 **put:**
 
 url = f"[http://154.38.171.54:5503/activos/{id}](http://154.38.171.54:5503/activos/%7Bid%7D)"
+
 data2 = json.dumps(activoActualizado)
+
 peticion2 = requests.put(url, data2)
 
 **post:**
 
 url = "http://154.38.171.54:5503/activos"
+
 data = json.dumps(activoNuevo)
+
 peticion = requests.post(url, data)
 
 **patch:**
 
 activo["historialActivos"].append(registroHistorialRetorno) #Aquí agrego el nuevo registro al historial del activo
+
 url = f"[http://154.38.171.54:5503/activos/{id}](http://154.38.171.54:5503/activos/%7Bid%7D)"
+
 dataHistorial = json.dumps(activo,default=str) #aquí envío el activo con ese nuevo registro de historial a la base de datos remota
+
 peticionHistorial = requests.patch(url, dataHistorial)
 
 1. **FUNCIÓN PARA VALIDAR EXPRESIONES REGULARES:**
